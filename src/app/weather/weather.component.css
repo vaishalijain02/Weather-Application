@@ -1,0 +1,28 @@
+.cityField{
+	margin-left: 2%;
+}
+.card{
+	background: #7dc8c5;
+	 max-width: 400px;
+}
+.iconImage{
+	margin-top: -5%;
+    margin-right: 15%;
+}
+.loader{
+	margin-left:10%;
+}
+.mat-list .mat-list-item, .mat-nav-list .mat-list-item, .mat-selection-list .mat-list-item {
+    color: #4b04c8;
+}
+.fontstyle{
+	font-size:46px;
+}
+.fontstylecloud{
+	font-size:22px;
+}
+.credit{
+  margin-bottom: 5rem;
+  margin-left: 7%;
+  margin-top:1%;
+}

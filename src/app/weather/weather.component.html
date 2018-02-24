@@ -1,0 +1,63 @@
+
+  <form (keydown.enter)="$event.preventDefault()" class="todo-form">
+    <mat-form-field>
+      <input 
+        #addNew 
+        matInput 
+        [formControl]="Key" 
+        required 
+        placeholder="API KEY">
+      <mat-hint>Type API key and press enter</mat-hint>
+      <mat-error *ngIf="Key.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+	 <mat-form-field class="cityField">
+      <input 
+        #addNewCity 
+        matInput 
+        [formControl]="Keycity" 
+        required 
+        placeholder="City">
+      <mat-hint>Type the city</mat-hint>
+      <mat-error *ngIf="Keycity.invalid">{{getErrorCityMessage()}}</mat-error>
+    </mat-form-field>
+	<button mat-fab color="primary" (click)="addAPIKey(addNew.value,addNewCity.value)">Go!</button>
+  </form>
+ <br>
+  <mat-progress-spinner *ngIf="spin"
+        class="example-margin loader"
+        [color]="color"
+        [mode]="mode"
+        [value]="value">
+  </mat-progress-spinner>
+    <div *ngIf="checkdata">
+      <mat-card class="card">
+       <mat-card-title-group class="head">
+	   
+			<mat-card-title>
+				<span class="mat-headline card-header">{{dataweather.name}}, {{dataweather.sys.country}}</span>	
+			</mat-card-title>   
+			<mat-card-subtitle>
+				<div>{{hours}}:{{minutes}} as in IST</div>	
+			</mat-card-subtitle>
+			<div *ngIf="!spin" mat-card-avatar class="iconImage">
+			<img #icon src="{{srcImg}}" width="120" height="120">
+			</div>
+		</mat-card-title-group>
+		<mat-divider></mat-divider>
+        <mat-card-content>
+				<mat-list role="list">
+				  <mat-list-item role="listitem" class="fontstyle"><b>{{dataweather.main.temp}}&deg;C</b></mat-list-item>
+				  <mat-list-item role="listitem"class="fontstylecloud">{{dataweather.weather[0].description}}</mat-list-item>
+				  <mat-list-item role="listitem">Temperature Min : <b>{{dataweather.main.temp_min}}&deg;C</b></mat-list-item>
+				  <mat-list-item role="listitem">Temperature Max : <b>{{dataweather.main.temp_max}}&deg;C</b></mat-list-item>
+				  <mat-list-item role="listitem">Wind : <b>{{dataweather.wind.speed}} m/s</b></mat-list-item>
+				  <mat-list-item role="listitem">Pressure : <b>{{dataweather.main.pressure}} hPa</b></mat-list-item>
+				  <mat-list-item role="listitem">Humidity : <b>{{dataweather.main.humidity}}%</b></mat-list-item>
+				  <mat-list-item role="listitem">Visibility : <b>{{dataweather.visibility/1000}} km</b></mat-list-item>
+				</mat-list>
+        </mat-card-content>
+      </mat-card>      
+	  <div class="credit">API guide: <a href="http://openweathermap.org/" target="_blank">openweathermap.org/</a></div>
+    </div>
+ 
+  
